@@ -5,6 +5,11 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	text-align: center;
+	font-family: "Roboto", arial;
+	--margin-bottom: 50px;
+	--main-background-color: #1f2937;
+	--pink-color: #aa38f6;
+	--white-txt-color: #f9faf8;
 }
 
 .grid-container {
@@ -12,4 +17,31 @@
 	display: grid;
 	justify-content: center;
 	align-content: center;
+}
+
+.btns {
+	padding-top: 2rem;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+button {
+	cursor: pointer;
+	border: none;
+	border-radius: 6px;
+	background: var(--pink-color);
+	padding: 5px 20px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 18px;
+	align-self: flex-start; /*disables the growing width/button doesnt take up all the XX space */
+}
+
+button:hover {
+	background-color: #3882f6;
+}
+
+button:active {
+	background-color: var(--pink-color);
 }

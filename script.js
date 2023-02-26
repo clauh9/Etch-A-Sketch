@@ -1,6 +1,7 @@
 const container = document.querySelector(".container");
 let gcontainer = document.querySelector(".grid-container");
 let repeat = 0;
+let currentColor = document.getElementById("colorpicker");
 
 function clear_grid() {
 	container.removeChild(gcontainer);
@@ -34,6 +35,7 @@ function create_grid(num_squares) {
 //allows you to mouseover and turn the boxes black
 function start_drawing() {
 	let squares = Array.from(document.querySelectorAll(`.squares`));
+	const rainbow = document.getElementById("rainbow");
 
 	squares.forEach((square) => {
 		square.addEventListener(
@@ -43,8 +45,23 @@ function start_drawing() {
 
 		square.addEventListener(
 			"mouseout",
-			() => ((square.style = "background-color: black;"), false)
+			() => ((square.style.backgroundColor = currentColor.value), false)
 		);
+
+
+		rainbow.addEventListener("click", () => {
+			const randomR = Math.floor(Math.random() * 256);
+			const randomG = Math.floor(Math.random() * 256);
+			const randomB = Math.floor(Math.random() * 256);
+
+			square.addEventListener(
+				"mouseout",
+				() => ((square.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`), false)
+			);
+		}
+		);
+
+
 	});
 }
 
@@ -53,3 +70,9 @@ const submit = document.querySelector("button");
 submit.addEventListener("click", () =>
 	create_grid(document.getElementById("fsquare").value)
 );
+//clear screen while mantaining the previous grid
+const clear = document.getElementById("clear");
+clear.addEventListener("click", () =>
+	create_grid(document.getElementById("fsquare").value)
+);
+
